@@ -1,0 +1,87 @@
+func Meta_return_offers
+  funccall print "Does not exist"
+endfunc
+
+func main # OH BOY OUR MAIN
+  assign i1 1
+  assign i2 1
+  assign iter 0
+  funccall print i1
+  funccall print i2
+  assign flag False
+  funccall fibonacci # <-- Call fibonacci
+
+  assign bool True
+  ###
+  # next line tests if you can concatenate different types!
+  ###
+
+  funccall print result result "test" True bool "'True'"
+  funccall strtoint result
+  assign x + 0 result # Checking to see if you can add, since we converted it to an int!
+  # You should not get a type error from this line!
+
+  funccall print result
+
+  # <(^_^<)
+  ###
+  # next set of lines examine if statements and changing conditions
+  ###
+
+  if == iter 10
+    if == iter 11
+      funccall print "should not run"
+    endif
+
+    assign iter + 10 10
+
+    if == iter 20
+      funccall print "should run!"
+    endif
+
+    while != iter 0
+      assign x / result iter
+      if == 0 % x 2 # So this prints if we have an even int!
+        # WOW A RANDOM COMMENT
+        funccall print x ", even!"
+      else
+        funccall print x ", odd!"#"Your parser better remove this"
+      endif
+      assign iter - iter 1
+
+      # Just for the sake of further testing
+      # Let's see if our Brew-In can handle func calls nested
+      # inside ifs and whiles!
+
+      assign flag True  # Let's take advantage of our global variables!
+      funccall fibonacci
+
+    endwhile
+
+  else
+    funccall print "should not run!"
+  endif
+
+endfunc
+
+func fibonacci
+  if flag
+    assign iter - iter 1
+    return
+  endif
+  if >= iter 10
+    funccall Meta_return_offers
+    return "420"
+  endif
+
+  assign sum + i1 i2
+  assign i1 i2
+  assign i2 sum
+  funccall print sum
+  assign iter + iter 1
+  funccall fibonacci
+endfunc
+
+
+func unused
+endfunc
